@@ -1,21 +1,16 @@
-#ifndef __CAMERA_H__
-#define __CAMERA_H__
+#pragma once
 
 #include "geometry.h"
 
-
-class Camera 
+class Camera
 {
 private:
-	Vec3f eye_;
-	Vec3f center_;
-	Vec3f up_;
+	vec3 eye;
+	vec3 center;
+	vec3 up;
 public:
-	Camera(Vec3f eye, Vec3f center, Vec3f up) : eye_(eye), center_(center), up_(up){}
-	Matrix viewportMatrix(int x, int y, int w, int h, int d);
-	Matrix lookat(Vec3f eye, Vec3f center, Vec3f up);
-	Matrix proj(Vec3f eye, Vec3f center);
+	Camera(vec3 eye_, vec3 center_, vec3 up_) : eye(eye_), center(center_), up(up_) {}
+	mat4 viewport(int x, int y, int w, int h, int d);
+	mat4 projection(vec3 eye, vec3 center);
+	mat4 lookAt(vec3 eye, vec3 center, vec3 up);
 };
-
-
-#endif //__CAMERA_H__
